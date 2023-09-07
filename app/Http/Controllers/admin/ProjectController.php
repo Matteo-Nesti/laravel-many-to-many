@@ -74,6 +74,11 @@ class ProjectController extends Controller
         $project->slug = Str::slug($project->title, '-');
 
         $project->save();
+
+
+        if (Arr::exists($data, 'technologies')) {
+            $project->tags()->attach($data['technologies']);
+        }
         return redirect()->route('admin.projects.show', $project);
     }
 
@@ -132,6 +137,7 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         if ($project->image) Storage::delete($project->image);
+        if (count($project->technologies)) $project->technologies()->detach();
         $project->delete();
         return redirect()->route('admin.projects.index');
     }
