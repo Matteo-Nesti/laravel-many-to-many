@@ -22,6 +22,7 @@
                 <th scope="col">Project-Title</th>
                 <th scope="col">Created at</th>
                 <th scope="col">Type</th>
+                <th scope="col">Technology</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -36,6 +37,7 @@
                     @else
                         <td>-</td>
                     @endif
+
 
                     <td>
                         <div class="d-flex">

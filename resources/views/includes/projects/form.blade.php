@@ -39,6 +39,7 @@
     </select>
 </div>
 {{-- img prev --}}
+
 <div class="mb-3 col-5">
     <label for="thumb-field" class="form-label">Thumb</label>
     <input type="file" class="form-control @error('image') is-invalid @enderror" id="thumb-field"
@@ -53,7 +54,19 @@
     <img src="{{ $project->image ? asset('storage/' . $project->image) : 'https://www.comune.foggia.it/wp-content/uploads/2021/03/placeholder.png' }}"
         class="img-fluid" alt="Preview" id="thumb-preview">
 </div>
-{{--  --}}
+
+{{-- technology checkbox --}}
+<div class="col-10 mb-3">
+    @foreach ($technologies as $technology)
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="technology-{{ $technology->id }}"
+                value="{{ $technology->id }}" name="technologies[]" @if (in_array($technology->id, $project_tag_ids ?? [])) checked @endif>
+            <label class="form-check-label" for="technology">{{ $technology->technology }}</label>
+        </div>
+    @endforeach
+</div>
+
+{{-- descrizione --}}
 <div class="mb-3 col-12">
     <label for="" class="form-label">Description</label>
     <textarea class="form-control @error('content') is-invalid @enderror" rows="6"aria-label="With textarea"
@@ -64,6 +77,7 @@
         </div>
     @enderror
 </div>
+
 <div class="col-3 ">
     <button class="btn btn-success">
         Salva
