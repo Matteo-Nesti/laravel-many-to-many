@@ -39,4 +39,4 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::resource('admin/tags', App\Http\Controllers\Admin\TagController::class, ['as' => 'admin']);
+Route::resource('admin/technologies', App\Http\Controllers\Admin\TechnologyController::class, ['as' => 'admin']);
