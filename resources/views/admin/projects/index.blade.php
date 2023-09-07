@@ -38,6 +38,14 @@
                         <td>-</td>
                     @endif
 
+                    <td>
+                        @forelse ($project->technologies as $technology)
+                            {{ $technology->technology }} ,
+                        @empty
+                            -
+                        @endforelse
+                    </td>
+
 
                     <td>
                         <div class="d-flex">

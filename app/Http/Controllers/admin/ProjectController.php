@@ -23,9 +23,9 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::orderBy('updated_at', 'DESC')->get();
+        $technologies = Technology::select('id', 'technology')->get();
 
-
-        return view('admin.projects.index', compact('projects'));
+        return view('admin.projects.index', compact('projects', 'technologies'));
     }
 
     /**
